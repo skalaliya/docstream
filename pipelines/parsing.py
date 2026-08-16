@@ -13,7 +13,7 @@ from dataclasses import dataclass
 DATE_PATTERNS = [
     (re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b"), "ymd"),
     (re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b"), "dmy"),
-    (re.compile(r"\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (\d{4})\b", re.I), "dMy"),
+    (re.compile(r"\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (\d{4})\b", re.IGNORECASE), "dMy"),
 ]
 
 MONTHS = {m: i + 1 for i, m in enumerate(
@@ -21,10 +21,10 @@ MONTHS = {m: i + 1 for i, m in enumerate(
 )}
 
 TOTAL_RE = re.compile(
-    r"(?:total|amount due|balance due|grand total)[^\d$]*\$?\s*([\d,]+\.\d{2})", re.I
+    r"(?:total|amount due|balance due|grand total)[^\d$]*\$?\s*([\d,]+\.\d{2})", re.IGNORECASE
 )
-INVOICE_NO_RE = re.compile(r"(?:invoice|inv|receipt)\s*(?:no\.?|number|#)?\s*[:\-]?\s*([A-Z0-9\-]{3,20})", re.I)
-ABN_RE = re.compile(r"\bABN[:\s]*(\d{2}\s?\d{3}\s?\d{3}\s?\d{3})\b", re.I)
+INVOICE_NO_RE = re.compile(r"(?:invoice|inv|receipt)\s*(?:no\.?|number|#)?\s*[:\-]?\s*([A-Z0-9\-]{3,20})", re.IGNORECASE)
+ABN_RE = re.compile(r"\bABN[:\s]*(\d{2}\s?\d{3}\s?\d{3}\s?\d{3})\b", re.IGNORECASE)
 CURRENCY_RE = re.compile(r"\b(AUD|USD|EUR|GBP)\b")
 
 

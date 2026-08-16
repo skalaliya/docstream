@@ -60,7 +60,7 @@ def _sha256(path: Path) -> str:
 
 
 def _now() -> str:
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(timezone.utc).isoformat()  # noqa: UP017 — py3.10 compat
 
 
 class NativeExtractor:

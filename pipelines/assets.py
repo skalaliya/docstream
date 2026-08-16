@@ -38,12 +38,12 @@ def bronze_documents(context, extracted_documents: list[ExtractionResult]) -> No
     df = pl.DataFrame([r.to_record() for r in extracted_documents])
 
     BRONZE_DIR.mkdir(parents=True, exist_ok=True)
-    try:
+    if (BRONZE_DIR / "_delta_log").exists():
         existing = pl.read_delta(str(BRONZE_DIR))
         seen = set(existing["source_sha256"].to_list())
         df = df.filter(~pl.col("source_sha256").is_in(seen))
         mode = "append"
-    except Exception:
+    else:
         mode = "overwrite"  # first write
 
     if df.height:
