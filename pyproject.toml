@@ -1,0 +1,30 @@
+[project]
+name = "docstream"
+version = "0.1.0"
+description = "AI-ready document data pipeline: OCR extraction -> medallion lakehouse -> AI-ready serving"
+authors = [{ name = "Sam Kalaliya", email = "skalaliya@gmail.com" }]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "dagster>=1.8",
+    "dagster-webserver>=1.8",
+    "polars>=1.0",
+    "deltalake>=0.19",
+    "pydantic>=2.7",
+    "pandera>=0.20",
+    "pillow>=10.0",
+    "pypdf>=4.0",
+]
+
+[project.optional-dependencies]
+ocr = ["docling>=2.0"]
+serving = ["sentence-transformers>=3.0", "qdrant-client>=1.10", "streamlit>=1.36", "duckdb>=1.0"]
+dev = ["pytest>=8.0", "ruff>=0.5", "pre-commit>=3.7"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

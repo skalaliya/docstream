@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+data/landing/*
+data/bronze/
+!data/landing/.gitkeep
+.dagster/
+*.duckdb
+dist/
+.pytest_cache/
+.ruff_cache/
