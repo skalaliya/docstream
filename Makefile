@@ -1,24 +1,32 @@
+PYTHON ?= python3
+VENV = .venv
+PIP = $(VENV)/bin/pip
+PY = $(VENV)/bin/python
+
 .PHONY: install dev samples pipeline dbt dashboard test lint all
 
-install:
-	pip install -e ".[dev,serving]"
+$(VENV):
+	$(PYTHON) -m venv $(VENV)
+
+install: $(VENV)  ## create venv + install deps
+	$(PIP) install -e ".[dev,serving]"
 
 dev:  ## Dagster UI
-	dagster dev -m pipelines.definitions
+	$(VENV)/bin/dagster dev -m pipelines.definitions
 
 samples:  ## generate synthetic invoices into data/landing
-	python scripts/generate_samples.py
+	$(PY) scripts/generate_samples.py
 
 dbt:  ## build gold models + run dbt tests
-	cd dbt && DBT_PROFILES_DIR=. dbt build
+	cd dbt && DBT_PROFILES_DIR=. ../$(VENV)/bin/dbt build
 
 dashboard:
-	streamlit run serving/dashboard.py
+	$(VENV)/bin/streamlit run serving/dashboard.py
 
 test:
-	pytest -q
+	$(PY) -m pytest -q
 
 lint:
-	ruff check .
+	$(VENV)/bin/ruff check .
 
 all: samples test dbt
