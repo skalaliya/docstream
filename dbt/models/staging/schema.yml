@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: stg_invoices
+    description: Typed staging view over silver invoices
+    columns:
+      - name: source_sha256
+        tests: [not_null, unique]
+      - name: invoice_number
+        tests: [not_null]
+      - name: total_amount
+        tests: [not_null]
+  - name: dim_vendors
+    description: Vendor dimension with lifetime spend
+    columns:
+      - name: vendor_abn
+        tests: [not_null, unique]
+  - name: fct_monthly_spend
+    description: Monthly spend aggregates by currency

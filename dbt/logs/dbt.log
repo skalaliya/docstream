@@ -1,0 +1,543 @@
+12:53:04.746991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd3faadd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd29bb280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd29bb250>]}
+
+
+============================== 12:53:04.748675 | 16bd09b8-4110-45d1-a0ce-bb619ee1d94d ==============================
+12:53:04.748675 [info ] [MainThread]: Running with dbt=1.12.2
+12:53:04.749086 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'quiet': 'False', 'hints_enabled': 'True', 'introspect': 'True', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'invocation_command': 'dbt build --no-use-colors', 'write_json': 'True', 'static_parser': 'True', 'maximum_seed_size_mib': '1', 'debug': 'False', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'log_path': '/sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/logs', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'False', 'profiles_dir': '.', 'fail_fast': 'False', 'empty': 'False', 'version_check': 'True', 'no_print': 'None', 'indirect_selection': 'eager', 'partial_parse': 'True'}
+12:53:04.893485 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd3f23160>]}
+12:53:04.920536 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd29b9fc0>]}
+12:53:04.921948 [info ] [MainThread]: Registered adapter: duckdb=1.11.0
+12:53:04.954219 [debug] [MainThread]: checksum: d1c4e4368d04a4c6528255c451411b2b27e084ca4ca35daa474d93a7778a7211, vars: {}, profile: docstream, target: dev, version: 1.12.2
+12:53:04.957543 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+12:53:04.957874 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd2aa76d0>]}
+12:53:05.657509 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fcefea020>]}
+12:53:05.740560 [debug] [MainThread]: Wrote artifact WritableManifest to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/manifest.json
+12:53:05.745755 [debug] [MainThread]: Wrote artifact SemanticManifest to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/semantic_manifest.json
+12:53:05.750656 [debug] [MainThread]: Wrote artifact OsiDocument to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/osi_document.json
+12:53:05.759250 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fcc1b22c0>]}
+12:53:05.759681 [info ] [MainThread]: Found 3 models, 6 data tests, 1 source, 500 macros
+12:53:05.760740 [info ] [MainThread]: 
+12:53:05.761052 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+12:53:05.761354 [info ] [MainThread]: 
+12:53:05.761724 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+12:53:05.764185 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_docstream'
+12:53:05.784135 [debug] [ThreadPool]: Using duckdb connection "list_docstream"
+12:53:05.784507 [debug] [ThreadPool]: On list_docstream: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "connection_name": "list_docstream"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"docstream"'
+    
+  
+  
+12:53:05.784858 [debug] [ThreadPool]: Opening a new connection, currently in state init
+12:53:05.793004 [debug] [ThreadPool]: SQL status: OK in 0.008 seconds
+12:53:05.793644 [debug] [ThreadPool]: On list_docstream: Close
+12:53:05.794115 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_docstream, now create_docstream_main)
+12:53:05.794469 [debug] [ThreadPool]: Creating schema "database: "docstream"
+schema: "main"
+"
+12:53:05.797664 [debug] [ThreadPool]: Using duckdb connection "create_docstream_main"
+12:53:05.797931 [debug] [ThreadPool]: On create_docstream_main: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "connection_name": "create_docstream_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='docstream'
+        and type != 'duckdb'
+    
+  
+12:53:05.798157 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+12:53:05.798705 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+12:53:05.799348 [debug] [ThreadPool]: Using duckdb connection "create_docstream_main"
+12:53:05.799602 [debug] [ThreadPool]: On create_docstream_main: BEGIN
+12:53:05.799956 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+12:53:05.800196 [debug] [ThreadPool]: Using duckdb connection "create_docstream_main"
+12:53:05.800421 [debug] [ThreadPool]: On create_docstream_main: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "connection_name": "create_docstream_main"} */
+
+    
+    
+        create schema if not exists "docstream"."main"
+    
+12:53:05.800784 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+12:53:05.801214 [debug] [ThreadPool]: On create_docstream_main: COMMIT
+12:53:05.801633 [debug] [ThreadPool]: Using duckdb connection "create_docstream_main"
+12:53:05.801922 [debug] [ThreadPool]: On create_docstream_main: COMMIT
+12:53:05.802357 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+12:53:05.802658 [debug] [ThreadPool]: On create_docstream_main: Close
+12:53:05.803398 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_docstream_main, now list_docstream_main)
+12:53:05.805475 [debug] [ThreadPool]: Using duckdb connection "list_docstream_main"
+12:53:05.805755 [debug] [ThreadPool]: On list_docstream_main: BEGIN
+12:53:05.806020 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+12:53:05.806439 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+12:53:05.806725 [debug] [ThreadPool]: Using duckdb connection "list_docstream_main"
+12:53:05.806989 [debug] [ThreadPool]: On list_docstream_main: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "connection_name": "list_docstream_main"} */
+select
+      'docstream' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'docstream'
+  
+12:53:05.808415 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+12:53:05.809039 [debug] [ThreadPool]: On list_docstream_main: ROLLBACK
+12:53:05.809431 [debug] [ThreadPool]: On list_docstream_main: Close
+12:53:05.809884 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fb7116dd0>]}
+12:53:05.810256 [debug] [MainThread]: Using duckdb connection "master"
+12:53:05.810576 [debug] [MainThread]: On master: BEGIN
+12:53:05.810866 [debug] [MainThread]: Opening a new connection, currently in state init
+12:53:05.811276 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+12:53:05.811689 [debug] [MainThread]: On master: COMMIT
+12:53:05.811987 [debug] [MainThread]: Using duckdb connection "master"
+12:53:05.812288 [debug] [MainThread]: On master: COMMIT
+12:53:05.812642 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+12:53:05.812936 [debug] [MainThread]: On master: Close
+12:53:05.815846 [debug] [Thread-1 (]: Began running node model.docstream.stg_invoices
+12:53:05.816198 [info ] [Thread-1 (]: 1 of 9 START sql view model main.stg_invoices .................................. [RUN]
+12:53:05.816561 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_docstream_main, now model.docstream.stg_invoices)
+12:53:05.816881 [debug] [Thread-1 (]: Began compiling node model.docstream.stg_invoices
+12:53:05.819942 [debug] [Thread-1 (]: Writing injected SQL for node "model.docstream.stg_invoices"
+12:53:05.821976 [debug] [Thread-1 (]: Began executing node model.docstream.stg_invoices
+12:53:05.833449 [debug] [Thread-1 (]: Writing runtime sql for node "model.docstream.stg_invoices"
+12:53:05.835549 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.stg_invoices"
+12:53:05.835870 [debug] [Thread-1 (]: On model.docstream.stg_invoices: BEGIN
+12:53:05.836173 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.836680 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.836975 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.stg_invoices"
+12:53:05.837257 [debug] [Thread-1 (]: On model.docstream.stg_invoices: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.stg_invoices"} */
+
+  
+  create view "docstream"."main"."stg_invoices__dbt_tmp" as (
+    -- Staging: typed view over the silver invoice parquet
+select
+    source_sha256,
+    invoice_number,
+    cast(invoice_date as date)          as invoice_date,
+    coalesce(vendor_abn, 'UNKNOWN')     as vendor_abn,
+    cast(total_amount as decimal(12,2)) as total_amount,
+    coalesce(currency, 'AUD')           as currency
+from '../data/silver/invoices.parquet'
+  );
+
+12:53:05.839137 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+12:53:05.841405 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.stg_invoices"
+12:53:05.841716 [debug] [Thread-1 (]: On model.docstream.stg_invoices: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.stg_invoices"} */
+alter view "docstream"."main"."stg_invoices__dbt_tmp" rename to "stg_invoices"
+12:53:05.842162 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.846877 [debug] [Thread-1 (]: On model.docstream.stg_invoices: COMMIT
+12:53:05.847207 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.stg_invoices"
+12:53:05.847468 [debug] [Thread-1 (]: On model.docstream.stg_invoices: COMMIT
+12:53:05.848590 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.850595 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.stg_invoices"
+12:53:05.850964 [debug] [Thread-1 (]: On model.docstream.stg_invoices: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.stg_invoices"} */
+
+      drop view if exists "docstream"."main"."stg_invoices__dbt_backup" cascade
+    
+12:53:05.851473 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.852634 [debug] [Thread-1 (]: On model.docstream.stg_invoices: Close
+12:53:05.853603 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd5f82ec0>]}
+12:53:05.854022 [info ] [Thread-1 (]: 1 of 9 OK created sql view model main.stg_invoices ............................. [OK in 0.04s]
+12:53:05.854422 [debug] [Thread-1 (]: Finished running node model.docstream.stg_invoices
+12:53:05.855012 [debug] [Thread-1 (]: Began running node test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7
+12:53:05.855356 [info ] [Thread-1 (]: 2 of 9 START test not_null_stg_invoices_invoice_number ......................... [RUN]
+12:53:05.855792 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.docstream.stg_invoices, now test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7)
+12:53:05.856071 [debug] [Thread-1 (]: Began compiling node test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7
+12:53:05.861871 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7"
+12:53:05.863235 [debug] [Thread-1 (]: Began executing node test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7
+12:53:05.870793 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7"
+12:53:05.872071 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7"
+12:53:05.872472 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7: BEGIN
+12:53:05.872778 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.873385 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.873731 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7"
+12:53:05.874048 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select invoice_number
+from "docstream"."main"."stg_invoices"
+where invoice_number is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.875098 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.876867 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7: ROLLBACK
+12:53:05.877284 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7: Close
+12:53:05.877724 [info ] [Thread-1 (]: 2 of 9 PASS not_null_stg_invoices_invoice_number ............................... [PASS in 0.02s]
+12:53:05.878105 [debug] [Thread-1 (]: Finished running node test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7
+12:53:05.878432 [debug] [Thread-1 (]: Began running node test.docstream.not_null_stg_invoices_source_sha256.d671791760
+12:53:05.878776 [info ] [Thread-1 (]: 3 of 9 START test not_null_stg_invoices_source_sha256 .......................... [RUN]
+12:53:05.879102 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.docstream.not_null_stg_invoices_invoice_number.fe25756ff7, now test.docstream.not_null_stg_invoices_source_sha256.d671791760)
+12:53:05.879398 [debug] [Thread-1 (]: Began compiling node test.docstream.not_null_stg_invoices_source_sha256.d671791760
+12:53:05.882332 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.not_null_stg_invoices_source_sha256.d671791760"
+12:53:05.883193 [debug] [Thread-1 (]: Began executing node test.docstream.not_null_stg_invoices_source_sha256.d671791760
+12:53:05.884049 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.not_null_stg_invoices_source_sha256.d671791760"
+12:53:05.884828 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_source_sha256.d671791760"
+12:53:05.885161 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_source_sha256.d671791760: BEGIN
+12:53:05.885444 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.885868 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.886148 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_source_sha256.d671791760"
+12:53:05.886411 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_source_sha256.d671791760: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.not_null_stg_invoices_source_sha256.d671791760"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select source_sha256
+from "docstream"."main"."stg_invoices"
+where source_sha256 is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.887215 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.887960 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_source_sha256.d671791760: ROLLBACK
+12:53:05.888327 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_source_sha256.d671791760: Close
+12:53:05.888705 [info ] [Thread-1 (]: 3 of 9 PASS not_null_stg_invoices_source_sha256 ................................ [PASS in 0.01s]
+12:53:05.889074 [debug] [Thread-1 (]: Finished running node test.docstream.not_null_stg_invoices_source_sha256.d671791760
+12:53:05.889398 [debug] [Thread-1 (]: Began running node test.docstream.not_null_stg_invoices_total_amount.72f1c6335b
+12:53:05.889689 [info ] [Thread-1 (]: 4 of 9 START test not_null_stg_invoices_total_amount ........................... [RUN]
+12:53:05.890001 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.docstream.not_null_stg_invoices_source_sha256.d671791760, now test.docstream.not_null_stg_invoices_total_amount.72f1c6335b)
+12:53:05.890258 [debug] [Thread-1 (]: Began compiling node test.docstream.not_null_stg_invoices_total_amount.72f1c6335b
+12:53:05.892967 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.not_null_stg_invoices_total_amount.72f1c6335b"
+12:53:05.893759 [debug] [Thread-1 (]: Began executing node test.docstream.not_null_stg_invoices_total_amount.72f1c6335b
+12:53:05.894636 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.not_null_stg_invoices_total_amount.72f1c6335b"
+12:53:05.895443 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_total_amount.72f1c6335b"
+12:53:05.895729 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_total_amount.72f1c6335b: BEGIN
+12:53:05.895978 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.896369 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.896629 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_stg_invoices_total_amount.72f1c6335b"
+12:53:05.896881 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_total_amount.72f1c6335b: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.not_null_stg_invoices_total_amount.72f1c6335b"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select total_amount
+from "docstream"."main"."stg_invoices"
+where total_amount is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.897673 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.898341 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_total_amount.72f1c6335b: ROLLBACK
+12:53:05.898696 [debug] [Thread-1 (]: On test.docstream.not_null_stg_invoices_total_amount.72f1c6335b: Close
+12:53:05.899055 [info ] [Thread-1 (]: 4 of 9 PASS not_null_stg_invoices_total_amount ................................. [PASS in 0.01s]
+12:53:05.899413 [debug] [Thread-1 (]: Finished running node test.docstream.not_null_stg_invoices_total_amount.72f1c6335b
+12:53:05.899717 [debug] [Thread-1 (]: Began running node test.docstream.unique_stg_invoices_source_sha256.26efe45421
+12:53:05.900040 [info ] [Thread-1 (]: 5 of 9 START test unique_stg_invoices_source_sha256 ............................ [RUN]
+12:53:05.900408 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.docstream.not_null_stg_invoices_total_amount.72f1c6335b, now test.docstream.unique_stg_invoices_source_sha256.26efe45421)
+12:53:05.900688 [debug] [Thread-1 (]: Began compiling node test.docstream.unique_stg_invoices_source_sha256.26efe45421
+12:53:05.904182 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.unique_stg_invoices_source_sha256.26efe45421"
+12:53:05.904903 [debug] [Thread-1 (]: Began executing node test.docstream.unique_stg_invoices_source_sha256.26efe45421
+12:53:05.905691 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.unique_stg_invoices_source_sha256.26efe45421"
+12:53:05.906397 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.unique_stg_invoices_source_sha256.26efe45421"
+12:53:05.906650 [debug] [Thread-1 (]: On test.docstream.unique_stg_invoices_source_sha256.26efe45421: BEGIN
+12:53:05.906887 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.907255 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.907513 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.unique_stg_invoices_source_sha256.26efe45421"
+12:53:05.907760 [debug] [Thread-1 (]: On test.docstream.unique_stg_invoices_source_sha256.26efe45421: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.unique_stg_invoices_source_sha256.26efe45421"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    source_sha256 as unique_field,
+    count(*) as n_records
+
+from "docstream"."main"."stg_invoices"
+where source_sha256 is not null
+group by source_sha256
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.911135 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+12:53:05.912071 [debug] [Thread-1 (]: On test.docstream.unique_stg_invoices_source_sha256.26efe45421: ROLLBACK
+12:53:05.912469 [debug] [Thread-1 (]: On test.docstream.unique_stg_invoices_source_sha256.26efe45421: Close
+12:53:05.912878 [info ] [Thread-1 (]: 5 of 9 PASS unique_stg_invoices_source_sha256 .................................. [PASS in 0.01s]
+12:53:05.913273 [debug] [Thread-1 (]: Finished running node test.docstream.unique_stg_invoices_source_sha256.26efe45421
+12:53:05.913813 [debug] [Thread-1 (]: Began running node model.docstream.dim_vendors
+12:53:05.914170 [info ] [Thread-1 (]: 6 of 9 START sql table model main.dim_vendors .................................. [RUN]
+12:53:05.914527 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.docstream.unique_stg_invoices_source_sha256.26efe45421, now model.docstream.dim_vendors)
+12:53:05.914842 [debug] [Thread-1 (]: Began compiling node model.docstream.dim_vendors
+12:53:05.915899 [debug] [Thread-1 (]: Writing injected SQL for node "model.docstream.dim_vendors"
+12:53:05.916870 [debug] [Thread-1 (]: Began executing node model.docstream.dim_vendors
+12:53:05.933639 [debug] [Thread-1 (]: Writing runtime sql for node "model.docstream.dim_vendors"
+12:53:05.934968 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.dim_vendors"
+12:53:05.935411 [debug] [Thread-1 (]: On model.docstream.dim_vendors: BEGIN
+12:53:05.935751 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.936294 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.936674 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.dim_vendors"
+12:53:05.937033 [debug] [Thread-1 (]: On model.docstream.dim_vendors: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.dim_vendors"} */
+
+    
+
+    create  table
+      "docstream"."main"."dim_vendors__dbt_tmp"
+  
+    
+    as (
+      -- One row per vendor (by ABN), with lifetime stats
+select
+    vendor_abn,
+    count(*)                        as invoice_count,
+    sum(total_amount)               as lifetime_spend,
+    min(invoice_date)               as first_invoice_date,
+    max(invoice_date)               as last_invoice_date
+from "docstream"."main"."stg_invoices"
+group by 1
+    );
+    
+  
+12:53:05.941158 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+12:53:05.942277 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.dim_vendors"
+12:53:05.942671 [debug] [Thread-1 (]: On model.docstream.dim_vendors: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.dim_vendors"} */
+alter table "docstream"."main"."dim_vendors__dbt_tmp" rename to "dim_vendors"
+12:53:05.943089 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.945123 [debug] [Thread-1 (]: On model.docstream.dim_vendors: COMMIT
+12:53:05.945439 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.dim_vendors"
+12:53:05.945697 [debug] [Thread-1 (]: On model.docstream.dim_vendors: COMMIT
+12:53:05.946364 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.947190 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.dim_vendors"
+12:53:05.947470 [debug] [Thread-1 (]: On model.docstream.dim_vendors: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.dim_vendors"} */
+
+      drop table if exists "docstream"."main"."dim_vendors__dbt_backup" cascade
+    
+12:53:05.947819 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.948450 [debug] [Thread-1 (]: On model.docstream.dim_vendors: Close
+12:53:05.948897 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fb7036ec0>]}
+12:53:05.949353 [info ] [Thread-1 (]: 6 of 9 OK created sql table model main.dim_vendors ............................. [OK in 0.03s]
+12:53:05.949742 [debug] [Thread-1 (]: Finished running node model.docstream.dim_vendors
+12:53:05.950063 [debug] [Thread-1 (]: Began running node model.docstream.fct_monthly_spend
+12:53:05.950519 [info ] [Thread-1 (]: 7 of 9 START sql table model main.fct_monthly_spend ............................ [RUN]
+12:53:05.950866 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.docstream.dim_vendors, now model.docstream.fct_monthly_spend)
+12:53:05.951172 [debug] [Thread-1 (]: Began compiling node model.docstream.fct_monthly_spend
+12:53:05.952101 [debug] [Thread-1 (]: Writing injected SQL for node "model.docstream.fct_monthly_spend"
+12:53:05.952933 [debug] [Thread-1 (]: Began executing node model.docstream.fct_monthly_spend
+12:53:05.954314 [debug] [Thread-1 (]: Writing runtime sql for node "model.docstream.fct_monthly_spend"
+12:53:05.955153 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.fct_monthly_spend"
+12:53:05.955453 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: BEGIN
+12:53:05.955745 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.956164 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.956462 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.fct_monthly_spend"
+12:53:05.956750 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.fct_monthly_spend"} */
+
+    
+
+    create  table
+      "docstream"."main"."fct_monthly_spend__dbt_tmp"
+  
+    
+    as (
+      -- Monthly spend fact table
+select
+    date_trunc('month', invoice_date)   as spend_month,
+    currency,
+    count(*)                            as invoice_count,
+    sum(total_amount)                   as total_spend,
+    avg(total_amount)                   as avg_invoice_amount
+from "docstream"."main"."stg_invoices"
+group by 1, 2
+order by 1
+    );
+    
+  
+12:53:05.958623 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+12:53:05.959698 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.fct_monthly_spend"
+12:53:05.960009 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.fct_monthly_spend"} */
+alter table "docstream"."main"."fct_monthly_spend__dbt_tmp" rename to "fct_monthly_spend"
+12:53:05.960507 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.961331 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: COMMIT
+12:53:05.961627 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.fct_monthly_spend"
+12:53:05.961902 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: COMMIT
+12:53:05.962548 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.963293 [debug] [Thread-1 (]: Using duckdb connection "model.docstream.fct_monthly_spend"
+12:53:05.963586 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "model.docstream.fct_monthly_spend"} */
+
+      drop table if exists "docstream"."main"."fct_monthly_spend__dbt_backup" cascade
+    
+12:53:05.963921 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.964513 [debug] [Thread-1 (]: On model.docstream.fct_monthly_spend: Close
+12:53:05.964939 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '16bd09b8-4110-45d1-a0ce-bb619ee1d94d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fb70778e0>]}
+12:53:05.965369 [info ] [Thread-1 (]: 7 of 9 OK created sql table model main.fct_monthly_spend ....................... [OK in 0.01s]
+12:53:05.965744 [debug] [Thread-1 (]: Finished running node model.docstream.fct_monthly_spend
+12:53:05.966049 [debug] [Thread-1 (]: Began running node test.docstream.not_null_dim_vendors_vendor_abn.9e85668435
+12:53:05.966334 [info ] [Thread-1 (]: 8 of 9 START test not_null_dim_vendors_vendor_abn .............................. [RUN]
+12:53:05.966658 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.docstream.fct_monthly_spend, now test.docstream.not_null_dim_vendors_vendor_abn.9e85668435)
+12:53:05.966947 [debug] [Thread-1 (]: Began compiling node test.docstream.not_null_dim_vendors_vendor_abn.9e85668435
+12:53:05.969788 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.not_null_dim_vendors_vendor_abn.9e85668435"
+12:53:05.970635 [debug] [Thread-1 (]: Began executing node test.docstream.not_null_dim_vendors_vendor_abn.9e85668435
+12:53:05.971434 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.not_null_dim_vendors_vendor_abn.9e85668435"
+12:53:05.972168 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_dim_vendors_vendor_abn.9e85668435"
+12:53:05.972451 [debug] [Thread-1 (]: On test.docstream.not_null_dim_vendors_vendor_abn.9e85668435: BEGIN
+12:53:05.972708 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.973107 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.973389 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.not_null_dim_vendors_vendor_abn.9e85668435"
+12:53:05.973642 [debug] [Thread-1 (]: On test.docstream.not_null_dim_vendors_vendor_abn.9e85668435: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.not_null_dim_vendors_vendor_abn.9e85668435"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select vendor_abn
+from "docstream"."main"."dim_vendors"
+where vendor_abn is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.974264 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.975006 [debug] [Thread-1 (]: On test.docstream.not_null_dim_vendors_vendor_abn.9e85668435: ROLLBACK
+12:53:05.975404 [debug] [Thread-1 (]: On test.docstream.not_null_dim_vendors_vendor_abn.9e85668435: Close
+12:53:05.975814 [info ] [Thread-1 (]: 8 of 9 PASS not_null_dim_vendors_vendor_abn .................................... [PASS in 0.01s]
+12:53:05.976213 [debug] [Thread-1 (]: Finished running node test.docstream.not_null_dim_vendors_vendor_abn.9e85668435
+12:53:05.976514 [debug] [Thread-1 (]: Began running node test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360
+12:53:05.976791 [info ] [Thread-1 (]: 9 of 9 START test unique_dim_vendors_vendor_abn ................................ [RUN]
+12:53:05.977165 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.docstream.not_null_dim_vendors_vendor_abn.9e85668435, now test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360)
+12:53:05.977467 [debug] [Thread-1 (]: Began compiling node test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360
+12:53:05.980131 [debug] [Thread-1 (]: Writing injected SQL for node "test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360"
+12:53:05.980980 [debug] [Thread-1 (]: Began executing node test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360
+12:53:05.981768 [debug] [Thread-1 (]: Writing runtime sql for node "test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360"
+12:53:05.982573 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360"
+12:53:05.982862 [debug] [Thread-1 (]: On test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360: BEGIN
+12:53:05.983112 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+12:53:05.983476 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+12:53:05.983743 [debug] [Thread-1 (]: Using duckdb connection "test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360"
+12:53:05.983995 [debug] [Thread-1 (]: On test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360: /* {"app": "dbt", "dbt_version": "1.12.2", "profile_name": "docstream", "target_name": "dev", "node_id": "test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    vendor_abn as unique_field,
+    count(*) as n_records
+
+from "docstream"."main"."dim_vendors"
+where vendor_abn is not null
+group by vendor_abn
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+12:53:05.985120 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+12:53:05.985842 [debug] [Thread-1 (]: On test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360: ROLLBACK
+12:53:05.986221 [debug] [Thread-1 (]: On test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360: Close
+12:53:05.986614 [info ] [Thread-1 (]: 9 of 9 PASS unique_dim_vendors_vendor_abn ...................................... [PASS in 0.01s]
+12:53:05.986981 [debug] [Thread-1 (]: Finished running node test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360
+12:53:05.987675 [debug] [MainThread]: Using duckdb connection "master"
+12:53:05.987930 [debug] [MainThread]: On master: BEGIN
+12:53:05.988132 [debug] [MainThread]: Opening a new connection, currently in state closed
+12:53:05.988468 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+12:53:05.988684 [debug] [MainThread]: On master: COMMIT
+12:53:05.988887 [debug] [MainThread]: Using duckdb connection "master"
+12:53:05.989084 [debug] [MainThread]: On master: COMMIT
+12:53:05.989355 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+12:53:05.989577 [debug] [MainThread]: On master: Close
+12:53:05.989829 [debug] [MainThread]: Connection 'master' was properly closed.
+12:53:05.990034 [debug] [MainThread]: Connection 'test.docstream.unique_dim_vendors_vendor_abn.cd9f2c8360' was properly closed.
+12:53:05.990274 [info ] [MainThread]: 
+12:53:05.990504 [info ] [MainThread]: Finished running 2 table models, 6 data tests, 1 view model in 0 hours 0 minutes and 0.23 seconds (0.23s).
+12:53:05.991199 [debug] [MainThread]: Command end result
+12:53:06.028965 [debug] [MainThread]: Wrote artifact WritableManifest to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/manifest.json
+12:53:06.031552 [debug] [MainThread]: Wrote artifact SemanticManifest to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/semantic_manifest.json
+12:53:06.032847 [debug] [MainThread]: Wrote artifact OsiDocument to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/osi_document.json
+12:53:06.036971 [debug] [MainThread]: Wrote artifact RunExecutionResult to /sessions/clever-epic-galileo/mnt/my-resume/docstream/dbt/target/run_results.json
+12:53:06.037259 [info ] [MainThread]: 
+12:53:06.037537 [info ] [MainThread]: Completed successfully
+12:53:06.037757 [info ] [MainThread]: 
+12:53:06.037986 [info ] [MainThread]: Done. PASS=9 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=9
+12:53:06.038742 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 1.3249897, "process_in_blocks": "12280", "process_kernel_time": 0.10805, "process_mem_max_rss": "177580", "process_out_blocks": "0", "process_user_time": 1.691447}
+12:53:06.039050 [debug] [MainThread]: Command `python -m dbt.cli.main build` succeeded at 12:53:06.039008 after 1.33 seconds
+12:53:06.039295 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd3faadd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd3f36800>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xfe8fd29b9fc0>]}
+12:53:06.039550 [debug] [MainThread]: Flushing usage events
+12:53:07.061595 [debug] [MainThread]: An error was encountered while trying to flush usage events

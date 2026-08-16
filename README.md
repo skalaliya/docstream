@@ -19,9 +19,9 @@ Extraction ── docling (layout-aware) with dependency-light native fallback
    ▼
 Bronze ────── raw extraction records, Delta Lake, sha256-deduped, idempotent
    ▼
-Silver ────── validated & typed (Pandera gates)            [week 2]
+Silver ────── parsed invoice fields, Pandera gates, quarantine for failures
    ▼
-Gold ──────── dbt + DuckDB star schema (vendors, spend)    [week 2]
+Gold ──────── dbt + DuckDB marts (dim_vendors, fct_monthly_spend) with dbt tests
    ▼
 Serving ───── embeddings → Qdrant (RAG-ready) · Streamlit dashboard  [week 3]
 ```
@@ -49,7 +49,7 @@ Or everything at once: `docker compose up`.
 ## Roadmap
 
 - [x] Week 1 — ingestion, extraction, bronze Delta layer, CI
-- [ ] Week 2 — Pandera silver gates, dbt gold models + docs
+- [x] Week 2 — Pandera silver gates + quarantine, dbt gold models (DuckDB) with tests
 - [ ] Week 3 — embeddings → Qdrant, PII redaction (presidio), Streamlit dashboard
 - [ ] Week 4 — monitoring/sensors, demo GIF, v1.0 release
 

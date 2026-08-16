@@ -13,6 +13,7 @@ dependencies = [
     "deltalake>=0.19",
     "pydantic>=2.7",
     "pandera>=0.20",
+    "dbt-duckdb>=1.8",
     "pillow>=10.0",
     "pypdf>=4.0",
 ]

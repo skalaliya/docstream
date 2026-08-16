@@ -1,0 +1,10 @@
+name: docstream
+version: "1.0.0"
+profile: docstream
+model-paths: ["models"]
+models:
+  docstream:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

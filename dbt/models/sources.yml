@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: silver
+    meta:
+      external_location: "{{ env_var('DOCSTREAM_SILVER', '../data/silver') }}/{name}.parquet"
+    tables:
+      - name: invoices
