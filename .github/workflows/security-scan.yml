@@ -1,0 +1,35 @@
+name: security-scan
+
+# Agentic security testing with Strix (usestrix/strix, Apache-2.0).
+# Runs autonomous AI pentest agents against the changed code on every PR and
+# on a weekly schedule. Findings are validated with real PoCs, not static-analysis
+# guesses. Requires repo secrets STRIX_LLM and LLM_API_KEY (Settings -> Secrets -> Actions).
+
+on:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  strix:
+    runs-on: ubuntu-latest
+    # Runs only when secrets are available (same-repo PRs, schedule, manual),
+    # so forks don't fail red.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Strix
+        run: curl -sSL https://strix.ai/install | bash
+
+      - name: Run Strix (quick, diff-scoped on PRs)
+        env:
+          STRIX_LLM: ${{ secrets.STRIX_LLM }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: strix -n -t ./ --scan-mode quick

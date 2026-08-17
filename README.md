@@ -53,6 +53,10 @@ Or everything containerized: `docker compose up`.
 - **Idempotency everywhere** — sha256 content hashing (bronze dedupe) and UUIDv5 point ids (Qdrant upserts) make every stage safely re-runnable.
 - **Lineage** — Dagster asset graph plus dbt docs give end-to-end column-level visibility.
 
+## Security testing
+
+Every pull request and a weekly schedule run [Strix](https://github.com/usestrix/strix) — autonomous AI pentest agents that exercise the code dynamically and validate findings with real proofs-of-concept, rather than static-analysis guesses. On PRs the scan is diff-scoped to changed files. In a governed clinical-data pipeline, security is part of the quality contract, not an afterthought. See `.github/workflows/security-scan.yml`.
+
 ## Design decisions
 
 - **Strategy-pattern extractors & embedders** — swap OCR engines (docling → HF VLM → cloud OCR) or embedding models without touching pipeline code; CI runs on zero-model fallbacks, so tests never download weights.
