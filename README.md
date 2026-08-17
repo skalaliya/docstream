@@ -8,6 +8,8 @@
 **AI-ready document data pipeline** — ingests messy real-world documents (invoices, receipts, reports), extracts structured data with layout-aware OCR, and lands it in a governed medallion lakehouse serving both analytics and RAG.
 
 > Built by [Sam Kalaliya](https://github.com/skalaliya) · Sydney, Australia
+>
+> **All data is 100% synthetic** — invoices are generated in-repo (`make samples`). No real documents, no real PII, ever. This is a public demo of the architecture and governance patterns behind private production work.
 
 ## Why
 
@@ -35,16 +37,22 @@ Orchestrated with **Dagster** (asset lineage, sensors, observability), all servi
 
 ## Quickstart
 
+**Prerequisites:** Docker + Docker Compose, and Python 3.11+. Run the steps in order — each builds on the last.
+
 ```bash
 make install                       # pip install -e ".[dev,serving]"
-make samples                       # generate synthetic invoices (no real PII)
-make dev                           # Dagster UI at http://localhost:3000 — materialize all
+make samples                       # generate synthetic invoices (no real PII) — run before `make dev`
+make dev                           # Dagster UI at http://localhost:3000 — materialize all assets
 make dbt                           # build gold marts + run dbt tests
 make dashboard                     # Streamlit spend analytics
 make test                          # 15 unit tests
 ```
 
-Or everything containerized: `docker compose up`.
+The `make` lane runs extraction → bronze → silver → gold → dashboard with no external services. The **serving assets that push embeddings to Qdrant, plus MinIO storage, only run under Docker** — for the full end-to-end system (including RAG-ready vectors), use:
+
+```bash
+docker compose up                  # Dagster UI + Qdrant + MinIO, all wired together
+```
 
 ## Governance & data quality
 
